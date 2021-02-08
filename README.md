@@ -1,13 +1,30 @@
 [![](https://img.shields.io/npm/dm/cordova-plugin-google-nearby.svg)](https://www.npmjs.com/package/cordova-plugin-google-nearby)
 # Description
-This plugin adds support for the [Google Nearby Messages API](https://developers.google.com/nearby/messages/overview). Support for the other Nearby APIs will follow.
-At the moment it works only for Android, but support for iOS will be done on the dev branch. 
+Cordova Plugin to support [Google Nearby Messages API](https://developers.google.com/nearby/messages/overview) API for iOS and Android
+
+# Platforms
+- iOS
+- Android
+
 # Installation
 ## Requirements
-Please follow the Steps 1, 2 and 3 of the [Getting Started of Google](https://developers.google.com/nearby/messages/android/get-started), which are these one:
-- Install Google Play services with Android SDK Manager
-- Install Google Repository with Android SDK Manager
-- Activate the Google Nearby API in the Google Developer Console
+- iOS only: Nearby pod has to be installed:
+
+  * manually install using ```pod install``` and podfile
+
+    OR
+
+  * Using plugin cordova-plugin-cocoapod-support(https://github.com/blakgeek/cordova-plugin-cocoapods-support):
+    * 1. install plugin
+    * 2. add this line to config.xml:
+```<pod name="NearbyMessages" />```
+under ```<platform name="ios">```
+
+  * follow steps 4-6: https://developers.google.com/nearby/messages/ios/get-started
+
+- Android only:
+
+  * follow steps 1-3 explained here: https://developers.google.com/nearby/messages/android/get-started
 
 ## Automatically
 Cordova
@@ -66,7 +83,7 @@ window.nearby.unsubscribe(function(success) {
 ## Ionic 
 - you can use [Ionic Native](https://ionicframework.com/docs/native/) 
 
-### Installtion
+### Installation
 
 ```
 ionic cordova plugin add cordova-plugin-google-nearby
