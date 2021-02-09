@@ -17,16 +17,16 @@
 
   <platform name="ios">
       <config-file target="config.xml" parent="/*">
-          <feature name="CDVNearbyPlugin">
-              <param name="ios-package" value="CDVNearbyPlugin" />
+          <feature name="NearbyPlugin">
+              <param name="ios-package" value="NearbyPlugin" />
           </feature>
       </config-file>
-      <source-file src="src/ios/CDVNearbyPlugin.swift" />
+      <source-file src="src/ios/NearbyPlugin.swift" />
       <config-file target="*-Info.plist" parent="NearbyApiKey">
           <string>$API_KEY</string>
       </config-file>
   </platform>
-        
+
   <platform name="android">
     <preference name="API_KEY" />
     <framework src="com.google.android.gms:play-services-nearby:11.6.0" />
@@ -36,7 +36,7 @@
         <param name="android-package" value="org.apache.cordova.NearbyPlugin"/>
       </feature>
     </config-file>
-    
+
     <config-file target="app/src/main/AndroidManifest.xml" parent="/manifest/application">
       <meta-data
             android:name="com.google.android.nearby.messages.API_KEY"

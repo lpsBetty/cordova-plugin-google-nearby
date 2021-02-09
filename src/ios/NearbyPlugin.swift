@@ -1,5 +1,5 @@
 //
-//  CDVNearbyPlugin.swift
+//  NearbyPlugin.swift
 //  Cordova Google Nearby Plugin
 //
 //  Created by Simone Egger on 05.06.19.
@@ -9,14 +9,14 @@
 import Foundation
 let kMyAPIKey = Bundle.main.object(forInfoDictionaryKey: "NearbyApiKey") as? String
 
-@objc(CDVNearbyPlugin) class CDVNearbyPlugin : CDVPlugin {
+@objc(NearbyPlugin) class NearbyPlugin : CDVPlugin {
     /**
      * @property
      * This class lets you check the permission state of Nearby for the app on the current device.  If
      * the user has not opted into Nearby, publications and subscriptions will not function.
      */
     var nearbyPermission: GNSPermission!
-    
+
     /**
      * @property
      * The message manager lets you create publications and subscriptions.  They are valid only as long
@@ -26,17 +26,17 @@ let kMyAPIKey = Bundle.main.object(forInfoDictionaryKey: "NearbyApiKey") as? Str
 
     var publication: GNSPublication?
     var subscription: GNSSubscription?
-    
+
     override func pluginInitialize() {
         // Enable debug logging to help track down problems.
         GNSMessageManager.setDebugLoggingEnabled(true)
-        
+
         // Create the message manager, which lets you publish messages and subscribe to messages
         // published by nearby devices.
         messageMgr = GNSMessageManager(apiKey: kMyAPIKey,
            paramsBlock: {(params: GNSMessageManagerParams?) -> Void in
             guard let params = params else { return }
-            
+
             // This is called when microphone permission is enabled or disabled by the user.
             params.microphonePermissionErrorHandler = { hasError in
                 if (hasError) {
@@ -57,8 +57,8 @@ let kMyAPIKey = Bundle.main.object(forInfoDictionaryKey: "NearbyApiKey") as? Str
             }
         })
     }
-  
-    
+
+
     /// Starts publishing the specified name
     @objc(publish:)
     func publish(_ command: CDVInvokedUrlCommand) {
@@ -86,7 +86,7 @@ let kMyAPIKey = Bundle.main.object(forInfoDictionaryKey: "NearbyApiKey") as? Str
             )
         }
     }
-    
+
     /// unsubscribes from subscription and removes publication
     @objc(unsubscribe:)
     func unsubscribe (_ command: CDVInvokedUrlCommand) {
@@ -101,7 +101,7 @@ let kMyAPIKey = Bundle.main.object(forInfoDictionaryKey: "NearbyApiKey") as? Str
             callbackId: command.callbackId
         )
     }
-    
+
     /// starts scanning for nearby devices that are publishing
     /// their names.
     @objc(subscribe:)
